@@ -1,12 +1,12 @@
 package jp.co.kawakawaryuryu.jumpbot.jumpbotweb.jump
 
-import java.util.*
+import java.sql.Date
 import javax.persistence.Column
 import javax.persistence.Id
 import javax.persistence.Table
 
 @Table(name = "jumps")
-class JumpEntity(
+class Jump(
         @Id
         @Column(name = "id")
         val id: Int,
