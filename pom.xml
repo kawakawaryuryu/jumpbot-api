@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>jp.co.kawakawaryuryu.jumpbot</groupId>
-    <artifactId>jumpbot-web</artifactId>
+    <artifactId>jumpbot-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>jumpbot-web</name>
-    <description>Jump Bot Web</description>
+    <name>jumpbot-api</name>
+    <description>Jump Bot API</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
