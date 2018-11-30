@@ -1,4 +1,4 @@
-package jp.co.kawakawaryuryu.jumpbot.jumpbotweb
+package com.kawakawaryuryu.jumpbot.jumpbotweb
 
 import org.junit.Test
 import org.junit.runner.RunWith

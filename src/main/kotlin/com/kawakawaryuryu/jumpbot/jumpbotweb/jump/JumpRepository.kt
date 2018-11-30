@@ -1,4 +1,4 @@
-package jp.co.kawakawaryuryu.jumpbot.jumpbotweb.jump
+package com.kawakawaryuryu.jumpbot.jumpbotweb.jump
 
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository

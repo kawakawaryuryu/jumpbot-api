@@ -1,4 +1,4 @@
-package jp.co.kawakawaryuryu.jumpbot.jumpbotweb.jump
+package com.kawakawaryuryu.jumpbot.jumpbotweb.jump
 
 interface JumpService {
     fun getNextJump(): Jump
