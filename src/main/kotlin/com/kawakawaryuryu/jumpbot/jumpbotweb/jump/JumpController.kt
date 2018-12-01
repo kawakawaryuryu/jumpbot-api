@@ -11,7 +11,7 @@ class JumpController(
         val jumpService: JumpService
 ) {
 
-    @GetMapping(value = "/next", produces = [MediaType.APPLICATION_JSON_UTF8_VALUE])
+    @GetMapping(value = ["/next"], produces = [MediaType.APPLICATION_JSON_UTF8_VALUE])
     fun getNextJump(): JumpResource {
         val jump = jumpService.getNextJump()
         return JumpResource(jump.releaseDay.toString(), jump.price, jump.combinedIssue)
