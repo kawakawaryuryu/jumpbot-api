@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/openjdk:8-jdk-browsers
+      - image: circleci/openjdk:8-jdk
       
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -37,10 +37,8 @@ jobs:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
 
-      - run: mkdir -p /tmp/test-reports
-
       # run tests!
-      - run: mvn integration-test
+      - run: mvn integration-test -X
 
       - store_test_results:
           path: target/surefire-reports
