@@ -1,24 +1,23 @@
 package com.kawakawaryuryu.jumpbot.jumpbotweb.jump
 
 import com.kawakawaryuryu.jumpbot.jumpbotweb.exception.SystemException
+import io.mockk.MockKAnnotations
+import io.mockk.every
+import io.mockk.impl.annotations.InjectMockKs
+import io.mockk.impl.annotations.MockK
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.ExpectedException
-import org.mockito.InjectMocks
-import org.mockito.Mock
-import org.mockito.Mockito
-import org.mockito.Mockito.`when`
-import org.mockito.MockitoAnnotations
 import java.sql.Date
 
 class JumpServiceImplTest {
 
-    @InjectMocks
+    @InjectMockKs
     private lateinit var jumpService: JumpServiceImpl
 
-    @Mock
+    @MockK
     private lateinit var jumpRepository: JumpRepository
 
     @Rule
@@ -27,7 +26,7 @@ class JumpServiceImplTest {
 
     @Before
     fun setup() {
-        MockitoAnnotations.initMocks(this)
+        MockKAnnotations.init(this)
     }
 
     @Test
@@ -36,7 +35,7 @@ class JumpServiceImplTest {
                 Jump(1, Date.valueOf("2018-12-20"), 250, true),
                 Jump(2, Date.valueOf("2018-12-13"), 260, false)
         )
-        `when`(jumpRepository.findByReleaseDayGreaterThanEqual(any())).thenReturn(jumps)
+        every { jumpRepository.findByReleaseDayGreaterThanEqual(any()) } returns jumps
 
         val jump = jumpService.getNextJump()
 
@@ -48,18 +47,11 @@ class JumpServiceImplTest {
 
     @Test
     fun testGetNextJump_emptyJumps() {
-        `when`(jumpRepository.findByReleaseDayGreaterThanEqual(any())).thenReturn(emptyList())
+        every { jumpRepository.findByReleaseDayGreaterThanEqual(any()) } returns emptyList()
 
         thrown.expect(SystemException::class.java)
         thrown.expectMessage("not register next jump information")
 
         jumpService.getNextJump()
-    }
-
-    /**
-     * non-nullなanyを作るためにラップしている
-     */
-    private fun <T> any(): T {
-        return Mockito.any<T>()
     }
 }
