@@ -1,6 +1,5 @@
 package com.kawakawaryuryu.jumpbot.jumpbotweb.jump
 
-import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.kawakawaryuryu.jumpbot.jumpbotweb.controller.ErrorResponseResource
 import io.mockk.mockkStatic
@@ -30,7 +29,7 @@ class JumpControllerTest {
 
     private lateinit var mockMvc: MockMvc
 
-    private val mapper: ObjectMapper = jacksonObjectMapper()
+    private val mapper = jacksonObjectMapper()
 
     @Before
     fun setup() {
